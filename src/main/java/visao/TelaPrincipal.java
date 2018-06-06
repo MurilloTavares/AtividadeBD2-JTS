@@ -1,11 +1,20 @@
 package visao;
 
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.io.ParseException;
+import com.vividsolutions.jts.io.WKTReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 public class TelaPrincipal extends javax.swing.JFrame {
 
     public TelaPrincipal() {
+        
         initComponents();        
         setLocationRelativeTo(null);
-        setVisible(true);
+        setVisible(true);        
     }
 
     @SuppressWarnings("unchecked")
@@ -135,8 +144,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         CoveredByBA.setText("---");
 
         btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         btnVerificar.setText("Verificar");
+        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,7 +176,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(lblGeometriaA)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGeomA))
+                        .addComponent(txtGeomA, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPredicados)
@@ -315,6 +334,150 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+        
+        GeometryFactory geomFactory = new GeometryFactory();
+        WKTReader reader = new WKTReader();
+        
+        String WKTgeomA = txtGeomA.getText();
+        String WKTgeomB = txtGeomB.getText();
+        
+        if(WKTgeomA.isEmpty() || WKTgeomB.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos.", "Erro", JOptionPane.ERROR_MESSAGE);
+           return;
+        }
+                
+        Geometry geomA = null;
+        try {
+            geomA = reader.read(WKTgeomA);
+        } catch (ParseException ex) {
+           JOptionPane.showMessageDialog(null, "Geometria A inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
+           return;
+        }
+        
+        Geometry geomB = null;
+        try {
+            geomB = reader.read(WKTgeomB);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Geometria B inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        setPredicados(geomA, geomB);                
+    }//GEN-LAST:event_btnVerificarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        limparPredicados();
+        limparGeometrias();        
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void setPredicados(Geometry geomA, Geometry geomB){
+        
+        //---AB---
+        if(geomA.equals(geomB)){ EqualsAB.setText(" T ");
+        }else{ EqualsAB.setText(" F "); }
+        
+        if(geomA.disjoint(geomB)){ DisjointAB.setText(" T ");
+        }else{ DisjointAB.setText(" F "); }
+        
+        if(geomA.intersects(geomB)){ IntersectsAB.setText(" T ");
+        }else{ IntersectsAB.setText(" F "); }
+        
+        if(geomA.touches(geomB)){ TouchesAB.setText(" T ");
+        }else{ TouchesAB.setText(" F "); }
+        
+        if(geomA.touches(geomB)){ TouchesAB.setText(" T ");
+        }else{ TouchesAB.setText(" F "); }
+        
+        if(geomA.crosses(geomB)){ CrossesAB.setText(" T ");
+        }else{ CrossesAB.setText(" F "); }
+        
+        if(geomA.within(geomB)){ WithinAB.setText(" T ");
+        }else{ WithinAB.setText(" F "); }
+        
+        if(geomA.contains(geomB)){ ContainsAB.setText(" T ");
+        }else{ ContainsAB.setText(" F "); }
+        
+        if(geomA.overlaps(geomB)){ OverlapsAB.setText(" T ");
+        }else{ OverlapsAB.setText(" F "); }
+        
+        if(geomA.covers(geomB)){ CoversAB.setText(" T ");
+        }else{ CoversAB.setText(" F "); }
+        
+        if(geomA.coveredBy(geomB)){ CoveredByAB.setText(" T ");
+        }else{ CoveredByAB.setText(" F "); }
+        
+        //---BA---
+        if(geomB.equals(geomA)){ EqualsBA.setText(" T ");
+        }else{ EqualsBA.setText(" F "); }
+        
+        if(geomB.disjoint(geomA)){ DisjointBA.setText(" T ");
+        }else{ DisjointBA.setText(" F "); }
+        
+        if(geomB.intersects(geomA)){ IntersectsBA.setText(" T ");
+        }else{ IntersectsBA.setText(" F "); }
+        
+        if(geomB.touches(geomA)){ TouchesBA.setText(" T ");
+        }else{ TouchesBA.setText(" F "); }
+        
+        if(geomB.touches(geomA)){ TouchesBA.setText(" T ");
+        }else{ TouchesBA.setText(" F "); }
+        
+        if(geomB.crosses(geomA)){ CrossesBA.setText(" T ");
+        }else{ CrossesBA.setText(" F "); }
+        
+        if(geomB.within(geomA)){ WithinBA.setText(" T ");
+        }else{ WithinBA.setText(" F "); }
+        
+        if(geomB.contains(geomA)){ ContainsBA.setText(" T ");
+        }else{ ContainsBA.setText(" F "); }
+        
+        if(geomB.overlaps(geomA)){ OverlapsBA.setText(" T ");
+        }else{ OverlapsBA.setText(" F "); }
+        
+        if(geomB.covers(geomA)){ CoversBA.setText(" T ");
+        }else{ CoversBA.setText(" F "); }
+        
+        if(geomB.coveredBy(geomA)){ CoveredByBA.setText(" T ");
+        }else{ CoveredByBA.setText(" F "); }
+        
+    }
+    
+    private void limparPredicados(){
+        
+        //---AB---
+        EqualsAB.setText("---");
+        DisjointAB.setText("---");
+        IntersectsAB.setText("---");
+        TouchesAB.setText("---");
+        TouchesAB.setText("---");
+        CrossesAB.setText("---");
+        WithinAB.setText("---");
+        ContainsAB.setText("---");
+        OverlapsAB.setText("---");
+        CoversAB.setText("---");
+        CoveredByAB.setText("---");
+        
+        //---BA---
+        EqualsBA.setText("---");
+        DisjointBA.setText("---");
+        IntersectsBA.setText("---");
+        TouchesBA.setText("---");
+        TouchesBA.setText("---");
+        CrossesBA.setText("---");
+        WithinBA.setText("---");
+        ContainsBA.setText("---");
+        OverlapsBA.setText("---");
+        CoversBA.setText("---");
+        CoveredByBA.setText("---");
+        CoveredByBA.setText("---");        
+    }
+    
+    private void limparGeometrias(){        
+        txtGeomA.setText("");
+        txtGeomB.setText("");        
+    }
+    
      public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
