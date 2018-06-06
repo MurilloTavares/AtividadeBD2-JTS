@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JLabel" name="jLabel18">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnLimpar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnVerificar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblGeometriaB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtGeomB" min="-2" pref="350" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblGeometriaA" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtGeomA" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPredicados" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEquals" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDisjoint" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblIntersects" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTouches" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCrosses" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblWithin" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblContains" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblOverlaps" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCovers" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCoverdBy" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="IntersectsAB" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="IntersectsBA" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="WithinAB" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="WithinBA" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="CrossesAB" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="CrossesBA" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="TouchesAB" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="TouchesBA" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="ContainsAB" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="ContainsBA" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="CoveredByAB" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="CoveredByBA" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="CoversAB" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="CoversBA" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="OverlapsAB" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="OverlapsBA" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="jSeparator2" min="-2" pref="50" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="DisjointAB" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="DisjointBA" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="lblAB" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblBA" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="EqualsAB" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="EqualsBA" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblGeometriaA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtGeomA" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblGeometriaB" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtGeomB" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnVerificar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblPredicados" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblEquals" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EqualsAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EqualsBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblDisjoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="DisjointAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="DisjointBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblIntersects" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="IntersectsAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="IntersectsBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblTouches" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblCrosses" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblWithin" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="TouchesAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TouchesBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CrossesAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CrossesBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="WithinAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="WithinBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblContains" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblOverlaps" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblCovers" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblCoverdBy" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="ContainsAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ContainsBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="OverlapsAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="OverlapsBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CoversAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CoversBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="CoveredByAB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CoveredByBA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="jSeparator2" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblGeometriaA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Geometria A:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtGeomA">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblGeometriaB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Geometria B:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtGeomB">
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEquals">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Equals"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDisjoint">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disjoint"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIntersects">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Intersects"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTouches">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Touches"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCrosses">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Crosses"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblWithin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Within"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblContains">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contains"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblOverlaps">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Overlaps"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCovers">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Covers"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCoverdBy">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CoveredBy"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPredicados">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Predicados"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="AB"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="BA"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator2">
+      <Properties>
+        <Property name="orientation" type="int" value="1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="EqualsAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="EqualsBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DisjointAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DisjointBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="IntersectsAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="IntersectsBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="TouchesAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="TouchesBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="CrossesAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="CrossesBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="WithinAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="WithinBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ContainsAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ContainsBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="OverlapsAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="OverlapsBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="CoversAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="CoversBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="CoveredByAB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="CoveredByBA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="---"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLimpar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Limpar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnVerificar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Verificar"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
