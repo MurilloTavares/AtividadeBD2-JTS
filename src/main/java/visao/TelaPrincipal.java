@@ -337,7 +337,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         
         GeometryFactory geomFactory = new GeometryFactory();
-        WKTReader reader = new WKTReader();
+        WKTReader reader = new WKTReader(geomFactory);
         
         String WKTgeomA = txtGeomA.getText();
         String WKTgeomB = txtGeomB.getText();
