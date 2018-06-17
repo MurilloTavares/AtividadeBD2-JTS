@@ -395,6 +395,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         limparPredicados();
         limparGeometrias();
+        limparImagem();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void desenharGeometrias(Geometry geomA, Geometry geomB) {
@@ -606,6 +607,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtGeomB.setText("");
     }
 
+    private void limparImagem() {
+        lblImg.setIcon(null);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
