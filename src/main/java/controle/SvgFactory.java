@@ -14,7 +14,7 @@ public class SvgFactory {
     private final File modeloSvg;
     
     public SvgFactory(){
-        modeloSvg = new File("modelo.svg");
+        modeloSvg = new File("src/main/java/img/modelo.svg");
     }
     
     public File criarSvg(String imgPath, Geometry geomA, Geometry geomB) throws IOException{
@@ -33,15 +33,15 @@ public class SvgFactory {
 
         ViewBox viewBox = new ViewBox(geomA, geomB);
         pw.write(viewBox.getViewBox());        
-
-        copiarNLinhas(pw, reader, 2);
-
-        pw.write(getSvg(geomA));
         
+        copiarNLinhas(pw, reader, 2);
+        
+        pw.write(getSvg(geomA));
+
         copiarNLinhas(pw, reader, 2);
 
         pw.write(getSvg(geomB));        
-
+        
         copiarNLinhas(pw, reader, 2);
 
         reader.close();

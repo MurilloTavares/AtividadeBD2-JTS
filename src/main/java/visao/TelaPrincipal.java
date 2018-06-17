@@ -4,17 +4,29 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
+import controle.SvgFactory;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.image.JPEGTranscoder;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
     public TelaPrincipal() {
-        
-        initComponents();        
+
+        initComponents();
         setLocationRelativeTo(null);
-        setVisible(true);        
+        setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -64,12 +76,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         CoveredByBA = new javax.swing.JLabel();
         btnLimpar = new javax.swing.JButton();
         btnVerificar = new javax.swing.JButton();
+        lblImg = new javax.swing.JLabel();
 
         jLabel18.setText("---");
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setSize(new java.awt.Dimension(400, 400));
 
         lblGeometriaA.setText("Geometria A:");
 
@@ -157,6 +171,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        lblImg.setPreferredSize(new java.awt.Dimension(400, 400));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,83 +180,88 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(btnLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVerificar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(lblGeometriaB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGeomB, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(lblGeometriaA)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGeomA, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPredicados)
-                            .addComponent(lblEquals)
-                            .addComponent(lblDisjoint)
-                            .addComponent(lblIntersects)
-                            .addComponent(lblTouches)
-                            .addComponent(lblCrosses)
-                            .addComponent(lblWithin)
-                            .addComponent(lblContains)
-                            .addComponent(lblOverlaps)
-                            .addComponent(lblCovers)
-                            .addComponent(lblCoverdBy))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(IntersectsAB)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(IntersectsBA))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(WithinAB)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(WithinBA))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(CrossesAB)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(CrossesBA))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(TouchesAB)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(TouchesBA))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ContainsAB)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ContainsBA))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(CoveredByAB)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(CoveredByBA))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(CoversAB)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(CoversBA))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(OverlapsAB)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(OverlapsBA)))
-                                .addGap(33, 33, 33)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DisjointAB)
-                                .addGap(18, 18, 18)
-                                .addComponent(DisjointBA))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAB)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblBA))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(EqualsAB)
-                                .addGap(18, 18, 18)
-                                .addComponent(EqualsBA)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtGeomA))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblPredicados)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lblAB)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lblBA))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblEquals)
+                                        .addComponent(lblDisjoint)
+                                        .addComponent(lblIntersects)
+                                        .addComponent(lblTouches)
+                                        .addComponent(lblCrosses)
+                                        .addComponent(lblWithin)
+                                        .addComponent(lblContains)
+                                        .addComponent(lblOverlaps)
+                                        .addComponent(lblCovers)
+                                        .addComponent(lblCoverdBy))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(DisjointAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(DisjointBA))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(EqualsAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(EqualsBA))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(IntersectsAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(IntersectsBA))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(WithinAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(WithinBA))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(CrossesAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(CrossesBA))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(TouchesAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(TouchesBA))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(ContainsAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(ContainsBA))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(CoveredByAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(CoveredByBA))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(CoversAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(CoversBA))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(OverlapsAB)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(OverlapsBA)))
+                                    .addGap(33, 33, 33)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 27, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lblGeometriaB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtGeomB))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,99 +283,103 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPredicados)
-                            .addComponent(lblAB)
-                            .addComponent(lblBA))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblEquals)
-                            .addComponent(EqualsAB)
-                            .addComponent(EqualsBA))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDisjoint)
-                            .addComponent(DisjointAB)
-                            .addComponent(DisjointBA))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblIntersects)
-                            .addComponent(IntersectsAB)
-                            .addComponent(IntersectsBA))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTouches)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCrosses)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblWithin))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(TouchesAB)
-                                    .addComponent(TouchesBA))
+                                    .addComponent(lblPredicados)
+                                    .addComponent(lblAB)
+                                    .addComponent(lblBA))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(CrossesAB)
-                                    .addComponent(CrossesBA))
+                                    .addComponent(lblEquals)
+                                    .addComponent(EqualsAB)
+                                    .addComponent(EqualsBA))
+                                .addGap(11, 11, 11)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblDisjoint)
+                                    .addComponent(DisjointAB)
+                                    .addComponent(DisjointBA))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(WithinAB)
-                                    .addComponent(WithinBA))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblContains)
+                                    .addComponent(lblIntersects)
+                                    .addComponent(IntersectsAB)
+                                    .addComponent(IntersectsBA))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblOverlaps)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblTouches)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblCrosses)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblWithin))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(TouchesAB)
+                                            .addComponent(TouchesBA))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(CrossesAB)
+                                            .addComponent(CrossesBA))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(WithinAB)
+                                            .addComponent(WithinBA))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCovers)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCoverdBy))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ContainsAB)
-                                    .addComponent(ContainsBA))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(OverlapsAB)
-                                    .addComponent(OverlapsBA))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(CoversAB)
-                                    .addComponent(CoversBA))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(CoveredByAB)
-                                    .addComponent(CoveredByBA)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblContains)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblOverlaps)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblCovers)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblCoverdBy))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(ContainsAB)
+                                            .addComponent(ContainsBA))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(OverlapsAB)
+                                            .addComponent(OverlapsBA))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(CoversAB)
+                                            .addComponent(CoversBA))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(CoveredByAB)
+                                            .addComponent(CoveredByBA)))))
+                            .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 4, Short.MAX_VALUE))
                     .addComponent(jSeparator2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-        
+
         GeometryFactory geomFactory = new GeometryFactory();
         WKTReader reader = new WKTReader(geomFactory);
-        
+
         String WKTgeomA = txtGeomA.getText();
         String WKTgeomB = txtGeomB.getText();
-        
-        if(WKTgeomA.isEmpty() || WKTgeomB.isEmpty()){
+
+        if (WKTgeomA.isEmpty() || WKTgeomB.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos.", "Erro", JOptionPane.ERROR_MESSAGE);
-           return;
+            return;
         }
-                
+
         Geometry geomA = null;
         try {
             geomA = reader.read(WKTgeomA);
         } catch (ParseException ex) {
-           JOptionPane.showMessageDialog(null, "Geometria A inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
-           return;
+            JOptionPane.showMessageDialog(null, "Geometria A inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        
+
         Geometry geomB = null;
         try {
             geomB = reader.read(WKTgeomB);
@@ -362,89 +387,192 @@ public class TelaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Geometria B inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        setPredicados(geomA, geomB);                
+
+        setPredicados(geomA, geomB);
+        desenharGeometrias(geomA, geomB);
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         limparPredicados();
-        limparGeometrias();        
+        limparGeometrias();
     }//GEN-LAST:event_btnLimparActionPerformed
 
-    private void setPredicados(Geometry geomA, Geometry geomB){
+    private void desenharGeometrias(Geometry geomA, Geometry geomB) {
+        String saidaPath = "src/main/java/img/geometrias.jpg";
         
-        //---AB---
-        if(geomA.equals(geomB)){ EqualsAB.setText(" T ");
-        }else{ EqualsAB.setText(" F "); }
-        
-        if(geomA.disjoint(geomB)){ DisjointAB.setText(" T ");
-        }else{ DisjointAB.setText(" F "); }
-        
-        if(geomA.intersects(geomB)){ IntersectsAB.setText(" T ");
-        }else{ IntersectsAB.setText(" F "); }
-        
-        if(geomA.touches(geomB)){ TouchesAB.setText(" T ");
-        }else{ TouchesAB.setText(" F "); }
-        
-        if(geomA.touches(geomB)){ TouchesAB.setText(" T ");
-        }else{ TouchesAB.setText(" F "); }
-        
-        if(geomA.crosses(geomB)){ CrossesAB.setText(" T ");
-        }else{ CrossesAB.setText(" F "); }
-        
-        if(geomA.within(geomB)){ WithinAB.setText(" T ");
-        }else{ WithinAB.setText(" F "); }
-        
-        if(geomA.contains(geomB)){ ContainsAB.setText(" T ");
-        }else{ ContainsAB.setText(" F "); }
-        
-        if(geomA.overlaps(geomB)){ OverlapsAB.setText(" T ");
-        }else{ OverlapsAB.setText(" F "); }
-        
-        if(geomA.covers(geomB)){ CoversAB.setText(" T ");
-        }else{ CoversAB.setText(" F "); }
-        
-        if(geomA.coveredBy(geomB)){ CoveredByAB.setText(" T ");
-        }else{ CoveredByAB.setText(" F "); }
-        
-        //---BA---
-        if(geomB.equals(geomA)){ EqualsBA.setText(" T ");
-        }else{ EqualsBA.setText(" F "); }
-        
-        if(geomB.disjoint(geomA)){ DisjointBA.setText(" T ");
-        }else{ DisjointBA.setText(" F "); }
-        
-        if(geomB.intersects(geomA)){ IntersectsBA.setText(" T ");
-        }else{ IntersectsBA.setText(" F "); }
-        
-        if(geomB.touches(geomA)){ TouchesBA.setText(" T ");
-        }else{ TouchesBA.setText(" F "); }
-        
-        if(geomB.touches(geomA)){ TouchesBA.setText(" T ");
-        }else{ TouchesBA.setText(" F "); }
-        
-        if(geomB.crosses(geomA)){ CrossesBA.setText(" T ");
-        }else{ CrossesBA.setText(" F "); }
-        
-        if(geomB.within(geomA)){ WithinBA.setText(" T ");
-        }else{ WithinBA.setText(" F "); }
-        
-        if(geomB.contains(geomA)){ ContainsBA.setText(" T ");
-        }else{ ContainsBA.setText(" F "); }
-        
-        if(geomB.overlaps(geomA)){ OverlapsBA.setText(" T ");
-        }else{ OverlapsBA.setText(" F "); }
-        
-        if(geomB.covers(geomA)){ CoversBA.setText(" T ");
-        }else{ CoversBA.setText(" F "); }
-        
-        if(geomB.coveredBy(geomA)){ CoveredByBA.setText(" T ");
-        }else{ CoveredByBA.setText(" F "); }
-        
+        JPEGTranscoder transcoder = new JPEGTranscoder();
+        transcoder.addTranscodingHint(JPEGTranscoder.KEY_QUALITY,
+                             new Float(.8));
+
+        try {
+            //Criando SVG
+            SvgFactory svgFactory = new SvgFactory();
+            File geomsSvg = svgFactory.criarSvg("src/main/java/img/geometrias.svg", geomA, geomB);
+
+            //Transformando SVG em JPG
+            String svgURI = geomsSvg.toURI().toURL().toString();
+            TranscoderInput transInput = new TranscoderInput(svgURI);
+
+            OutputStream outStream = new FileOutputStream(saidaPath);
+            TranscoderOutput transOutput = new TranscoderOutput(outStream);
+            
+            transcoder.transcode(transInput, transOutput);
+            
+            lblImg.setIcon(new ImageIcon(ImageIO.read(new File(saidaPath))));
+                        
+            outStream.flush();
+            outStream.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro ao gerar Imagem SVG", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (TranscoderException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro ao gerar Imagem JPG", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
-    
-    private void limparPredicados(){
-        
+
+    private void setPredicados(Geometry geomA, Geometry geomB) {
+
+        //---AB---
+        if (geomA.equals(geomB)) {
+            EqualsAB.setText(" T ");
+        } else {
+            EqualsAB.setText(" F ");
+        }
+
+        if (geomA.disjoint(geomB)) {
+            DisjointAB.setText(" T ");
+        } else {
+            DisjointAB.setText(" F ");
+        }
+
+        if (geomA.intersects(geomB)) {
+            IntersectsAB.setText(" T ");
+        } else {
+            IntersectsAB.setText(" F ");
+        }
+
+        if (geomA.touches(geomB)) {
+            TouchesAB.setText(" T ");
+        } else {
+            TouchesAB.setText(" F ");
+        }
+
+        if (geomA.touches(geomB)) {
+            TouchesAB.setText(" T ");
+        } else {
+            TouchesAB.setText(" F ");
+        }
+
+        if (geomA.crosses(geomB)) {
+            CrossesAB.setText(" T ");
+        } else {
+            CrossesAB.setText(" F ");
+        }
+
+        if (geomA.within(geomB)) {
+            WithinAB.setText(" T ");
+        } else {
+            WithinAB.setText(" F ");
+        }
+
+        if (geomA.contains(geomB)) {
+            ContainsAB.setText(" T ");
+        } else {
+            ContainsAB.setText(" F ");
+        }
+
+        if (geomA.overlaps(geomB)) {
+            OverlapsAB.setText(" T ");
+        } else {
+            OverlapsAB.setText(" F ");
+        }
+
+        if (geomA.covers(geomB)) {
+            CoversAB.setText(" T ");
+        } else {
+            CoversAB.setText(" F ");
+        }
+
+        if (geomA.coveredBy(geomB)) {
+            CoveredByAB.setText(" T ");
+        } else {
+            CoveredByAB.setText(" F ");
+        }
+
+        //---BA---
+        if (geomB.equals(geomA)) {
+            EqualsBA.setText(" T ");
+        } else {
+            EqualsBA.setText(" F ");
+        }
+
+        if (geomB.disjoint(geomA)) {
+            DisjointBA.setText(" T ");
+        } else {
+            DisjointBA.setText(" F ");
+        }
+
+        if (geomB.intersects(geomA)) {
+            IntersectsBA.setText(" T ");
+        } else {
+            IntersectsBA.setText(" F ");
+        }
+
+        if (geomB.touches(geomA)) {
+            TouchesBA.setText(" T ");
+        } else {
+            TouchesBA.setText(" F ");
+        }
+
+        if (geomB.touches(geomA)) {
+            TouchesBA.setText(" T ");
+        } else {
+            TouchesBA.setText(" F ");
+        }
+
+        if (geomB.crosses(geomA)) {
+            CrossesBA.setText(" T ");
+        } else {
+            CrossesBA.setText(" F ");
+        }
+
+        if (geomB.within(geomA)) {
+            WithinBA.setText(" T ");
+        } else {
+            WithinBA.setText(" F ");
+        }
+
+        if (geomB.contains(geomA)) {
+            ContainsBA.setText(" T ");
+        } else {
+            ContainsBA.setText(" F ");
+        }
+
+        if (geomB.overlaps(geomA)) {
+            OverlapsBA.setText(" T ");
+        } else {
+            OverlapsBA.setText(" F ");
+        }
+
+        if (geomB.covers(geomA)) {
+            CoversBA.setText(" T ");
+        } else {
+            CoversBA.setText(" F ");
+        }
+
+        if (geomB.coveredBy(geomA)) {
+            CoveredByBA.setText(" T ");
+        } else {
+            CoveredByBA.setText(" F ");
+        }
+
+    }
+
+    private void limparPredicados() {
+
         //---AB---
         EqualsAB.setText("---");
         DisjointAB.setText("---");
@@ -457,7 +585,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         OverlapsAB.setText("---");
         CoversAB.setText("---");
         CoveredByAB.setText("---");
-        
+
         //---BA---
         EqualsBA.setText("---");
         DisjointBA.setText("---");
@@ -470,15 +598,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         OverlapsBA.setText("---");
         CoversBA.setText("---");
         CoveredByBA.setText("---");
-        CoveredByBA.setText("---");        
+        CoveredByBA.setText("---");
     }
-    
-    private void limparGeometrias(){        
+
+    private void limparGeometrias() {
         txtGeomA.setText("");
-        txtGeomB.setText("");        
+        txtGeomB.setText("");
     }
-    
-     public static void main(String args[]) {
+
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -547,6 +675,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblEquals;
     private javax.swing.JLabel lblGeometriaA;
     private javax.swing.JLabel lblGeometriaB;
+    private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblIntersects;
     private javax.swing.JLabel lblOverlaps;
     private javax.swing.JLabel lblPredicados;
